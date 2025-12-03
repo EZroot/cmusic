@@ -50,6 +50,9 @@ add_executable(cmusic
     src/core/main.cpp
     src/rendering/screen_loop.cpp
     src/audio/audio_pipe.cpp
+    src/audio/data_generation.cpp
+    src/audio/ftt_processor.cpp
+    src/audio/globals.cpp
 )
 
 target_link_libraries(cmusic PRIVATE

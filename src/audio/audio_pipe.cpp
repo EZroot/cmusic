@@ -1,29 +1,16 @@
+#include "constants.h"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_mixer.h>
 #include <iostream>
-#include <string>
-#include <vector>
-#include <atomic>
-#include <algorithm> 
-#include <cmath> 
+#include <algorithm>
 
-constexpr int AUDIO_BUFFER_SAMPLES = 2048;
-constexpr int CHANNELS = 2; 
-std::vector<int16_t> g_raw_audio_buffer(AUDIO_BUFFER_SAMPLES * CHANNELS); 
-std::atomic<bool> g_new_audio_data_ready{false};
-std::vector<float> g_fft_magnitudes(16, 0.0f); 
 static Mix_Music* g_music = nullptr;
 
 void SDLCALL PostMixCallback(void* userdata, Uint8* stream, int len) {
-    if (len != AUDIO_BUFFER_SAMPLES * CHANNELS * sizeof(int16_t)) {
-        return; 
-    }
+    if (len != AUDIO_BUFFER_SAMPLES * CHANNELS * sizeof(int16_t)) return;
 
     const int16_t* source_samples = reinterpret_cast<const int16_t*>(stream);
-    std::copy(source_samples, 
-              source_samples + (len / sizeof(int16_t)), 
-              g_raw_audio_buffer.begin());
-
+    std::copy(source_samples, source_samples + (len / sizeof(int16_t)), g_raw_audio_buffer.begin());
     g_new_audio_data_ready = true;
 }
 
