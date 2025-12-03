@@ -1,0 +1,66 @@
+# --- Build Artifacts (CMake) ---
+# CMake generates these directories and files during configuration and build.
+/build/
+/install/
+/CMakeFiles
+CMakeCache.txt
+CTestTestfile.cmake
+compile_commands.json
+Makefile
+cmake_install.cmake
+
+# VCPKG (If you used Vcpkg for dependency management)
+vcpkg/
+vcpkg.json
+vcpkg-root/
+
+# --- Object & Executable Files ---
+# Compiled object files and archives
+*.o
+*.obj
+*.ko
+*.mod.c
+*.smod
+*.a
+*.lib
+*.so
+*.dll
+
+# Executable files (your compiled program, e.g., 'cframe')
+*.out
+*.exe
+/bin/
+/cframe  # Specific to your project, if not inside /build/
+
+# --- IDEs and Editors ---
+
+# Visual Studio Code (VSCode)
+.vscode/
+
+# Kate/KDevelop/KDE related files (Common on Kubuntu)
+*.kate-swp
+*.kdevelop
+
+# Vim/NeoVim
+*.swp
+*.swo
+*.swn
+*~
+.vim/
+
+# GNU Nano
+*~
+
+# Visual Studio/MSVC (Just in case you cross-compile or use VS on another machine)
+*.VC.db
+*.sdf
+*.suo
+*.user
+
+# --- OS Generated Files ---
+# Mac OS X folder attributes
+.DS_Store
+
+# Thumbnails and trash on Linux
+.directory
+.Trash-1000
